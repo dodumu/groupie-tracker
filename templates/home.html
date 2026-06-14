@@ -1,0 +1,15 @@
+{{define "title"}}Groupie Tracker{{end}} {{define "content"}}
+<h1>Welcome To GROUPIE TRACKER</h1>
+
+<p>Select artist/band you want to know about</p>
+
+<div class="artist">
+  {{range .Artist}}
+  <div class="cards">
+    {{.Name}}
+    <br />
+    <a href="/artist/{{.ID}}">Go to Band</a>
+  </div>
+  {{end}}
+</div>
+{{end}}

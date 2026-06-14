@@ -1,0 +1,19 @@
+{{define "title"}}Artists{{end}} {{define "content"}}
+
+<h1>{{.Artist.Name}}</h1>
+
+<img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" />
+
+<p><strong>Created on:</strong> {{.Artist.CreationDate}}</p>
+<p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
+
+<h3>Dates & Locations</h3>
+
+{{range $location, $dates := .Relations}}
+<h4>{{$location}}</h4>
+<ul>
+  {{range $dates}}
+  <li>{{.}}</li>
+  {{end}}
+</ul>
+{{end}} {{end}}
