@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
+	fs := http.FileServer(http.Dir("static/"))
+	http.Handle("/static", http.StripPrefix("/static/", fs))
 	// aritst, _ := handler.GetRelationByID(2)
 	// fmt.Println(aritst)
 

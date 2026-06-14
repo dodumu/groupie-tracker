@@ -4,6 +4,17 @@
 
 <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" />
 
+<p>
+    <strong>Members:</strong>
+    <ul>
+        {{range .Artist.Members}}
+
+        <li>{{.}}</li>
+        {{end}}
+    </ul>
+    
+</p>
+
 <p><strong>Created on:</strong> {{.Artist.CreationDate}}</p>
 <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
 
@@ -16,4 +27,8 @@
   <li>{{.}}</li>
   {{end}}
 </ul>
-{{end}} {{end}}
+{{end}}
+
+
+<a href="/">Go Home</a>
+{{end}}

@@ -1,14 +1,14 @@
 {{define "title"}}Groupie Tracker{{end}} {{define "content"}}
-<h1>Welcome To GROUPIE TRACKER</h1>
-
-<p>Select artist/band you want to know about</p>
+<h1>Groupie Tracker</h1>
+<p class="page-sub">Select an artist or band to learn more</p>
 
 <div class="artist">
   {{range .Artist}}
   <div class="cards">
-    {{.Name}}
-    <br />
-    <a href="/artist/{{.ID}}">Go to Band</a>
+    <img src="{{.Image}}" alt="{{.Name}}" />
+    <h3>{{.Name}}</h3>
+    <p class="meta-row">Founded: <span>{{.CreationDate}}</span></p>
+    <a href="/artist/{{.ID}}">View band →</a>
   </div>
   {{end}}
 </div>
