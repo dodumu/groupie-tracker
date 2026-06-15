@@ -7,11 +7,7 @@ import (
 
 func GetLocationByID(id int) (Location, error) {
 
-	locations, err := GetLocations()
-	if err != nil {
-		return Location{}, err
-	}
-	for _, location := range locations {
+	for _, location := range LocationsCache {
 		if location.ID == id {
 			return location, nil
 		}
@@ -20,11 +16,8 @@ func GetLocationByID(id int) (Location, error) {
 }
 
 func GetDatesByID(id int) (Date, error) {
-	dates, err := GetDate()
-	if err != nil {
-		return Date{}, err
-	}
-	for _, date := range dates {
+
+	for _, date := range DatesCache {
 		if date.ID == id {
 			return date, nil
 		}
@@ -33,11 +26,8 @@ func GetDatesByID(id int) (Date, error) {
 }
 
 func GetRelationByID(id int) (Relation, error) {
-	relations, err := GetRelations()
-	if err != nil {
-		return Relation{}, err
-	}
-	for _, relation := range relations {
+
+	for _, relation := range RelationsCache {
 		if relation.ID == id {
 			return relation, nil
 		}
@@ -46,11 +36,8 @@ func GetRelationByID(id int) (Relation, error) {
 }
 
 func GetArtistsByID(id int) (Artist, error) {
-	artsits, err := GetArtists()
-	if err != nil {
-		return Artist{}, nil
-	}
-	for _, artist := range artsits {
+
+	for _, artist := range ArtistsCache {
 		if artist.ID == id {
 			return artist, nil
 		}
