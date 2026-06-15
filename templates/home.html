@@ -1,7 +1,23 @@
 {{define "title"}}Groupie Tracker{{end}} {{define "content"}}
 <h1>Groupie Tracker</h1>
-<p class="page-sub">Select an artist or band to learn more</p>
 
+<form action="/search" method="GET">
+  <label for="search">Search User</label><br />
+  <input
+    type="text"
+    name="search"
+    id="search"
+    class="search"
+    placeholder="search..."
+  />
+  <br />
+  <button type="submit">Search</button>
+
+  <a href="/">Go Home</a>
+</form>
+
+<p class="page-sub">Select an artist or band to learn more</p>
+<hr />
 <div class="artist">
   {{range .Artist}}
   <div class="cards">
@@ -9,6 +25,7 @@
     <h3>{{.Name}}</h3>
     <p class="meta-row">Founded: <span>{{.CreationDate}}</span></p>
     <a href="/artist/{{.ID}}">View band →</a>
+    <hr />
   </div>
   {{end}}
 </div>

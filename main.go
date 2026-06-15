@@ -13,5 +13,6 @@ func main() {
 
 	http.HandleFunc("/", handler.HomeHandler)
 	http.HandleFunc("/artist/", handler.ArtistHandler)
+	http.HandleFunc("/search", handler.SearchHandler)
 	http.ListenAndServe(":8090", nil)
 }

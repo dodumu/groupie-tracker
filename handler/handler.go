@@ -55,3 +55,26 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	BaseHandler(w, "artists.html", target)
 }
+
+func SearchHandler(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query().Get("search")
+	if query == "" {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+
+	artist, err := SearchUsers(strings.ToLower(query))
+	if err != nil {
+		http.Error(w, "Artist not found", http.StatusNotFound)
+		return
+	}
+
+	// reuse ArtistPage — get the full page for that artist
+	target, err := GetArtistPage(artist.ID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	BaseHandler(w, "artists.html", target)
+}

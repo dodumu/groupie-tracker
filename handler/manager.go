@@ -1,6 +1,9 @@
 package handler
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func GetLocationByID(id int) (Location, error) {
 
@@ -80,4 +83,18 @@ func GetArtistPage(id int) (ArtistPage, error) {
 		Relations: relation.DatesLocation,
 	}
 	return target, nil
+}
+
+func SearchUsers(name string) (Artist, error) {
+	band, err := GetArtists()
+	if err != nil {
+		return Artist{}, err
+	}
+
+	for _, singer := range band {
+		if strings.ToLower(singer.Name) == name || strings.Contains(strings.ToLower(singer.Name), name) {
+			return singer, nil
+		}
+	}
+	return Artist{}, fmt.Errorf("Artist not found")
 }
